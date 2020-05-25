@@ -2187,10 +2187,12 @@ class Vehicle(HasObservers):
         else:
             raise ValueError('Expecting location to be LocationGlobal or LocationGlobalRelative.')
 
+        print("SimpleGOTO mission_item_send before")
         self._master.mav.mission_item_send(0, 0, 0, frame,
                                            mavutil.mavlink.MAV_CMD_NAV_WAYPOINT, 2, 0, 0,
                                            0, 0, 0, location.lat, location.lon,
                                            alt)
+        print("SimpleGOTO mission_item_send after")
 
         if airspeed is not None:
             self.airspeed = airspeed
