@@ -2178,7 +2178,7 @@ class Vehicle(HasObservers):
             # However, APM discards information about the relative frame
             # and treats any alt value as relative. So we compensate here.
             frame = mavutil.mavlink.MAV_FRAME_GLOBAL_RELATIVE_ALT
-             print("SimpleGOTO LocationGlobal")
+            print("SimpleGOTO LocationGlobal")
             if not self.home_location:
                 print("SimpleGOTO LocationGlobal download")
                 self.commands.download()
