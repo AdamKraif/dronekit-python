@@ -2171,13 +2171,16 @@ class Vehicle(HasObservers):
         if isinstance(location, LocationGlobalRelative):
             frame = mavutil.mavlink.MAV_FRAME_GLOBAL_RELATIVE_ALT
             alt = location.alt
+            print("SimpleGOTO LocationGlobalRelative")
         elif isinstance(location, LocationGlobal):
             # This should be the proper code:
             # frame = mavutil.mavlink.MAV_FRAME_GLOBAL
             # However, APM discards information about the relative frame
             # and treats any alt value as relative. So we compensate here.
             frame = mavutil.mavlink.MAV_FRAME_GLOBAL_RELATIVE_ALT
+             print("SimpleGOTO LocationGlobal")
             if not self.home_location:
+                print("SimpleGOTO LocationGlobal download")
                 self.commands.download()
                 self.commands.wait_ready()
             alt = location.alt - self.home_location.alt
